@@ -1,0 +1,141 @@
+:root{
+  --water1:#68cff0; --water2:#53c1df; --shine:rgba(255,255,255,.22);
+  --y1:#ffe887; --y2:#ffd249;            
+  --stroke:#e4a131;                        
+  --ink:#1b1b1b; --cheek:#ff7ea2;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:#e9f6ff;font-family: 'Courier New', Courier, monospace;}
+
+.ocean{
+  position:relative;height:100vh;overflow:hidden;
+  background:linear-gradient(var(--water1),var(--water2));
+  box-shadow:inset 0 12px 28px rgba(0,0,0,.12);
+}
+.wave{position:absolute;inset:0;pointer-events:none;background-size:280px 100%}
+.w1{background:radial-gradient(120px 16px at 12% 68%,var(--shine) 
+    12%,transparent 60%) repeat-x;opacity:.45;animation:w 6s linear infinite}
+.w2{background:radial-gradient(140px 18px at 22% 60%,var(--shine)
+     10%,transparent 60%) repeat-x;opacity:.28;animation:w 9s linear infinite reverse}
+@keyframes w{to{background-position:280px 0}}
+
+.goldfish{
+  --size: 190px;
+  position:absolute; top:50%; left:-32%;
+  width:var(--size); height:var(--size);      
+  transform:translateY(-50%);
+  animation:swim 9s linear infinite;
+}
+@keyframes swim{
+  0%  { left:-34%; transform:translateY(-50%) }
+  25% { transform:translateY(calc(-50% - 6px)) rotate(1.2deg) }
+  50% { transform:translateY(calc(-50% + 5px)) rotate(-1.2deg) }
+  75% { transform:translateY(calc(-50% - 4px)) rotate(1deg) }
+  100%{ left:110%; transform:translateY(-50%) }
+}
+
+.tail{
+  position:absolute; right:-50px; top:50%; transform:translateY(-50%);
+  width:120px; height:110px; z-index:0;
+}
+.lobe{
+  position:absolute; width:108px; height:54px; background:var(--y2);
+  border-radius:70px 70px 12px 70px;
+  box-shadow:0 0 0 4px var(--stroke);
+  transform-origin:22px 50%;
+}
+.t1{ top:-6px;  transform:rotate(18deg) }
+.t2{ bottom:-6px;transform:rotate(-18deg) }
+.tail{ animation:wag .34s ease-in-out infinite alternate }
+@keyframes wag{from{transform:translateY(-50%) rotate(8deg)}
+to{transform:translateY(-50%) rotate(-12deg)}}
+
+.body{
+  position:absolute; inset:0; z-index:2;
+  border-radius:50%;
+  background:radial-gradient(circle at 42% 38%, var(--y1) 0%, var(--y2) 62%);
+  box-shadow:0 0 0 4px var(--stroke), inset -16px -18px 0 rgba(255,165,40,.45);
+}
+
+
+.eye{
+  position:absolute; top:52%; transform:translateY(-50%);
+  width:44px; height:44px; border-radius:50%;
+  background:#fff; border:4px solid var(--stroke);
+  display:grid; place-items:center; z-index:4;
+}
+.eye.left{ left:34% }
+.eye.right{ left:58% }
+.pupil{ width:18px; height:18px; border-radius:50%; background:var(--ink) }
+
+/* cheeks */
+.cheek{
+  position:absolute; top:65%; width:16px; height:16px; border-radius:50%;
+  background:var(--cheek); opacity:.38; z-index:3;
+}
+.c-left{ left:33% } .c-right{ left:63% }
+
+.mouth{
+  position:absolute; top:66%; left:48.5%;
+  width:14px; height:14px; border-radius:50%;
+  background:#f2b15a; box-shadow:0 0 0 4px var(--stroke) inset; z-index:4;
+}
+
+.mbubble{
+  position:absolute; left:48.5%; top:66%;
+  width:9px; height:9px; border-radius:50%;
+  background:rgba(255,255,255,.92);
+  box-shadow:inset -2px -2px 0 rgba(255,255,255,.55);
+  transform:translate(0,0) scale(.1); opacity:0; z-index:1;
+  animation:pop 3.2s ease-in-out infinite;
+}
+.m2{ animation-delay:.9s }
+@keyframes pop{
+  10%{ opacity:1; transform:translate(6px,-6px) scale(1) }
+  100%{ opacity:0; transform:translate(6px,-80px) scale(1.2) }
+}
+
+.fin{
+  position:absolute;
+  background:linear-gradient(180deg, var(--y1) 0%, var(--y2) 70%); /* فقط رنگ */
+  box-shadow:0 0 0 4px var(--stroke);
+  z-index:3;
+}
+.dorsal{ 
+  width:64px; height:34px; border-radius:40px 40px 10px 40px;
+  top:-16px; left:45%; transform:rotate(-18deg);
+}
+.ventral{ 
+  width:58px; height:30px; border-radius:40px 40px 10px 40px;
+  bottom:-10px; left:54%; transform:rotate(18deg);
+}
+
+.shadow{
+  position:absolute; left:24%; bottom:-30px; width:58%; height:12px; border-radius:12px;
+  background:rgba(255,255,255,.18); filter:blur(8px); z-index:1;
+  animation:sh 9s linear infinite;
+}
+@keyframes sh{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+
+.bubble{
+  position:absolute; bottom:-10px; border-radius:50%;
+  background:rgba(255,255,255,.85); box-shadow:inset -2px -3px 0 rgba(255,255,255,.55);
+  animation:rise 7s linear infinite;
+}
+.b1{ left:15%; width:10px; height:10px }
+.b2{ left:32%; width:12px; height:12px; animation-duration:8s; animation-delay:.5s }
+.b3{ left:48%; width:8px;  height:8px;  animation-duration:6.2s; animation-delay:1s }
+.b4{ left:64%; width:11px; height:11px; animation-duration:7.6s; animation-delay:1.4s }
+.b5{ left:78%; width:9px;  height:9px;  animation-duration:6.8s; animation-delay:.9s }
+.b6{ left:88%; width:13px; height:13px; animation-duration:8.4s; animation-delay:1.8s }
+@keyframes rise{
+  0%{ transform:translateY(0); opacity:.95 }
+  85%{ opacity:.95 }
+  100%{ transform:translateY(-68vh); opacity:0 }
+}
+
+
+@media (prefers-reduced-motion:reduce){
+  .wave,.goldfish,.tail,.fin,.shadow,.mbubble,.bubble{animation:none!important}
+}
