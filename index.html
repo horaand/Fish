@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Round Goldfish — Pure CSS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="ocean" aria-label="Animated ocean with a round cute goldfish">
+    <div class="wave w1" aria-hidden="true"></div>
+    <div class="wave w2" aria-hidden="true"></div>
+
+    <div class="goldfish" role="img" aria-label="Round goldfish swims left to right">
+      <!-- tail (behind body) -->
+      <div class="tail">
+        <i class="lobe t1"></i>
+        <i class="lobe t2"></i>
+      </div>
+
+      <!-- body (front) -->
+      <div class="body">
+        <!-- face -->
+        <div class="eye left"><span class="pupil"></span></div>
+        <div class="eye right"><span class="pupil"></span></div>
+        <div class="cheek c-left"></div>
+        <div class="cheek c-right"></div>
+        <div class="mouth"></div>
+
+        <!-- subtle mouth bubbles -->
+        <span class="mbubble m1" aria-hidden="true"></span>
+        <span class="mbubble m2" aria-hidden="true"></span>
+
+        <!-- fins (keep-your-positions) -->
+        <div class="fin dorsal"></div>
+        <div class="fin ventral"></div>
+      </div>
+
+      <div class="shadow" aria-hidden="true"></div>
+    </div>
+
+    <!-- global bubbles -->
+    <span class="bubble b1"></span>
+    <span class="bubble b2"></span>
+    <span class="bubble b3"></span>
+    <span class="bubble b4"></span>
+    <span class="bubble b5"></span>
+    <span class="bubble b6"></span>
+  </main>
+</body>
+</html>
